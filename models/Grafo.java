@@ -34,10 +34,11 @@ public class Grafo {
     }
 
     public void adicionarVertice(Vertice vertice) throws Exception {
-        if (this.vertices.contains(vertice.getNome())) {
-            throw new Exception("ERRO - Vertice ja criado");
+        for (Vertice verticeAux : this.vertices) {
+            if (verticeAux.getNome().equals(vertice.getNome())) {
+                throw new Exception("ERRO - Vertice ja criado");
+            }
         }
-
         this.vertices.add(vertice);
     }
 
