@@ -33,34 +33,34 @@ public class Grafo {
         this.direcionado = direcionado;
     }
 
-    public void adicionarVertice(String vertice) throws Exception {
+    public void adicionarVertice(String vertice) {
         if (this.vertices.contains(vertice)) {
-            throw new Exception("ERRO - Vertice ja criado");
+            System.err.println("ERRO - Vertice ja criado");
         }
 
         this.vertices.add(vertice);  
     }
 
-    public void removerVertice(String vertice) throws Exception {
+    public void removerVertice(String vertice) {
         if (!this.vertices.contains(vertice)) {
-            throw new Exception("ERRO - Vertice nao encontrado");
+            System.err.println("ERRO - Vertice nao encontrado");
         }
 
         this.vertices.remove(vertice);
     }
 
-    public void adicionarAresta(Aresta aresta) throws Exception {
+    public void adicionarAresta(Aresta aresta) {
         if (!this.vertices.contains(aresta.getVertice1()) 
                 || !this.vertices.contains(aresta.getVertice2())) {
-            throw new Exception("ERRO - Vertice nao encontrado");
+            System.err.println("ERRO - Vertice nao encontrado");
         }
 
         this.arestas.add(aresta);  
     }
 
-    public void removerAresta(Aresta aresta) throws Exception {
+    public void removerAresta(Aresta aresta) {
         if (!this.arestas.contains(aresta)) {
-            throw new Exception("ERRO - Aresta nao encontrada");
+            System.err.println("ERRO - Aresta nao encontrada");
         }
 
         this.arestas.add(aresta);  

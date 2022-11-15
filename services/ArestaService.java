@@ -4,15 +4,15 @@ import models.Aresta;
 
 public class ArestaService {
     
-    public Aresta criarAresta(String arestaString) throws Exception{
+    public Aresta criarAresta(String arestaString) {
         if (arestaString == null || arestaString.trim() == "") {
-            throw new Exception("Formato para adicionar Aresta incorreto");
+            System.err.println("Formato para adicionar Aresta incorreto");
         }
 
         String[] aresta = arestaString.split(",");
 
         if (aresta == null || aresta.length < 3) {
-            throw new Exception("Formato para adicionar Aresta incorreto");
+            System.err.println("Formato para adicionar Aresta incorreto");
         }
 
         validarVertice(aresta[0]);
@@ -21,9 +21,9 @@ public class ArestaService {
         return new Aresta(aresta[0], aresta[1], Integer.parseInt(aresta[2]));
     }
 
-    private void validarVertice(String vertice) throws Exception{
+    private void validarVertice(String vertice) {
         if (vertice == null || vertice.trim() == "") {
-            throw new Exception("Vertice incorreta");
+            System.err.println("Vertice incorreta");
         }
     }
 }

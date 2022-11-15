@@ -15,7 +15,7 @@ public class MainFactory {
         return new Grafo(validarResposta());
     }
 
-    public void criarListaVertice(Grafo grafo) throws Exception {        
+    public void criarListaVertice(Grafo grafo) {        
         boolean maisVertice;
         do {
             System.out.println("Insira o nome do vertice:");
@@ -28,7 +28,7 @@ public class MainFactory {
         } while (maisVertice);
     }
 
-    public void criarListaAresta(Grafo grafo) throws Exception {
+    public void criarListaAresta(Grafo grafo) {
         boolean maisVertice;
         do {
             System.out.println("Insira a aresta no formato \"Vertice1, Vertice2, Peso\":");
