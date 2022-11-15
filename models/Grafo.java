@@ -17,6 +17,14 @@ public class Grafo {
         this.direcionado = direcionado;
     }
 
+    public List<String> getVertices() {
+        return vertices;
+    }
+
+    public List<Aresta> getArestas() {
+        return arestas;
+    }    
+
     public Boolean getDirecionado() {
         return direcionado;
     }
