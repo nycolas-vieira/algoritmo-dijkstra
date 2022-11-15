@@ -3,8 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
-
 public class Grafo {
     
     private List<String> vertices;
@@ -13,8 +11,8 @@ public class Grafo {
 
     private Boolean direcionado;
 
-    public Grafo(List<String> vertices, Boolean direcionado) {
-        this.vertices = vertices;
+    public Grafo(Boolean direcionado) {
+        this.vertices = new ArrayList<>();
         this.arestas = new ArrayList<>();
         this.direcionado = direcionado;
     }
