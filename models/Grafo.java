@@ -29,7 +29,7 @@ public class Grafo {
 
     public void adicionarVertice(String vertice) throws Exception {
         if (this.vertices.contains(vertice)) {
-            throw new Exception("ERRO - Vertice already created");
+            throw new Exception("ERRO - Vertice ja criado");
         }
 
         this.vertices.add(vertice);  
@@ -37,17 +37,26 @@ public class Grafo {
 
     public void removerVertice(String vertice) throws Exception {
         if (!this.vertices.contains(vertice)) {
-            throw new Exception("ERRO - Vertice not found");
+            throw new Exception("ERRO - Vertice nao encontrado");
         }
 
         this.vertices.remove(vertice);
     }
 
-    public void adicionarAresta(Aresta aresta) {
+    public void adicionarAresta(Aresta aresta) throws Exception {
+        if (!this.vertices.contains(aresta.getVertice1()) 
+                || !this.vertices.contains(aresta.getVertice2())) {
+            throw new Exception("ERRO - Vertice nao encontrado");
+        }
+
         this.arestas.add(aresta);  
     }
 
-    public void removerAresta(Aresta aresta) {
+    public void removerAresta(Aresta aresta) throws Exception {
+        if (!this.arestas.contains(aresta)) {
+            throw new Exception("ERRO - Aresta nao encontrada");
+        }
+
         this.arestas.add(aresta);  
     }
 
