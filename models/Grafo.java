@@ -11,6 +11,12 @@ public class Grafo {
 
     private Boolean direcionado;
 
+    public Grafo() {
+        this.vertices = new ArrayList<>();
+        this.arestas = new ArrayList<>();
+        this.direcionado = false;
+    }
+
     public Grafo(Boolean direcionado) {
         this.vertices = new ArrayList<>();
         this.arestas = new ArrayList<>();
