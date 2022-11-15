@@ -61,11 +61,11 @@ public class Grafo {
         boolean hasVertice2 = false;
 
         for (Vertice verticeAux : this.vertices) {
-            if (verticeAux.getNome().equals(aresta.getVertice1())) {
+            if (verticeAux.getNome().equals(aresta.getVertice1().getNome())) {
                 hasVertice1 = true;
             }
 
-            if (verticeAux.getNome().equals(aresta.getVertice2())) {
+            if (verticeAux.getNome().equals(aresta.getVertice2().getNome())) {
                 hasVertice2 = true;
             }
         }

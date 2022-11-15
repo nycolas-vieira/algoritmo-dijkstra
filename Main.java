@@ -1,5 +1,6 @@
 import factories.MainFactory;
 import models.Aresta;
+import models.Dijkstra;
 import models.Grafo;
 import models.Vertice;
 import util.LoadData;
@@ -22,19 +23,25 @@ public class Main {
 
         System.out.println("Direcionado: " + grafo.getDirecionado());
 
-        System.out.println("\n");
+        System.out.println("Vértices: ");
 
         for (Vertice vertice : grafo.getVertices()) {
             System.out.println(vertice.getNome());
         }
 
-        System.out.println("\n");
+        System.out.println("\nArestas: ");
 
         for (Aresta aresta : grafo.getArestas()) {
-            System.out.println("Vertice 1: " + aresta.getVertice1());
-            System.out.println("Vertice 2: " + aresta.getVertice2());
+            System.out.println("Vertice 1: " + aresta.getVertice1().getNome());
+            System.out.println("Vertice 2: " + aresta.getVertice2().getNome());
             System.out.println("Peso: " + aresta.getPeso());
+            System.out.println();
         }
+
+        System.out.println();
+
+        Dijkstra dijkstra = new Dijkstra(grafo);
+        factory.executarDijksra(dijkstra);
     }
 
 }
