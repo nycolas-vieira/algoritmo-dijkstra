@@ -4,24 +4,26 @@ import java.util.Scanner;
 
 import models.Grafo;
 import services.ArestaService;
+import services.VerticeService;
 
 public class MainFactory {
-    
+
     private static Scanner scanner = new Scanner(System.in);
     private ArestaService arestaService = new ArestaService();
+    private VerticeService verticeService = new VerticeService();
 
-    public Grafo criaGrafo()  {
+    public Grafo criaGrafo() {
         System.out.println("O grafo sera direcionado? (S/N)");
         return new Grafo(validarResposta());
     }
 
-    public void criarListaVertice(Grafo grafo) {        
+    public void criarListaVertice(Grafo grafo) {
         boolean maisVertice;
         do {
             try {
                 System.out.println("Insira o nome do vertice:");
                 String nomeVertice = scanner.nextLine();
-                grafo.adicionarVertice(nomeVertice);
+                grafo.adicionarVertice(verticeService.criarVertice(nomeVertice));
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
@@ -52,5 +54,5 @@ public class MainFactory {
         String resposta = scanner.nextLine();
         return resposta.toUpperCase().equals("S") ? true : false;
     }
- 
+
 }

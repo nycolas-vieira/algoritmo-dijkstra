@@ -1,14 +1,15 @@
 import factories.MainFactory;
 import models.Aresta;
 import models.Grafo;
+import models.Vertice;
 
 public class Main {
-    
+
     public static MainFactory factory = new MainFactory();
 
     public static void main(String[] args) {
         Grafo grafo = factory.criaGrafo();
-            
+
         factory.criarListaVertice(grafo);
         factory.criarListaAresta(grafo);
 
@@ -16,8 +17,8 @@ public class Main {
 
         System.out.println("\n");
 
-        for (String vertice : grafo.getVertices()) {
-            System.out.println(vertice);
+        for (Vertice vertice : grafo.getVertices()) {
+            System.out.println(vertice.getNome());
         }
 
         System.out.println("\n");
