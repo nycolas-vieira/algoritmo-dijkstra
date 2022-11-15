@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grafo {
-    
-    private List<String> vertices;
+
+    private List<Vertice> vertices;
 
     private List<Aresta> arestas;
 
@@ -17,13 +17,13 @@ public class Grafo {
         this.direcionado = direcionado;
     }
 
-    public List<String> getVertices() {
+    public List<Vertice> getVertices() {
         return vertices;
     }
 
     public List<Aresta> getArestas() {
         return arestas;
-    }    
+    }
 
     public Boolean getDirecionado() {
         return direcionado;
@@ -33,15 +33,16 @@ public class Grafo {
         this.direcionado = direcionado;
     }
 
-    public void adicionarVertice(String vertice) throws Exception {
-        if (this.vertices.contains(vertice)) {
-            throw new Exception("ERRO - Vertice ja criado");
+    public void adicionarVertice(Vertice vertice) throws Exception {
+        for (Vertice verticeAux : this.vertices) {
+            if (verticeAux.getNome().equals(vertice.getNome())) {
+                throw new Exception("ERRO - Vertice ja criado");
+            }
         }
-
-        this.vertices.add(vertice);  
+        this.vertices.add(vertice);
     }
 
-    public void removerVertice(String vertice) throws Exception {
+    public void removerVertice(Vertice vertice) throws Exception {
         if (!this.vertices.contains(vertice)) {
             throw new Exception("ERRO - Vertice nao encontrado");
         }
@@ -50,12 +51,25 @@ public class Grafo {
     }
 
     public void adicionarAresta(Aresta aresta) throws Exception {
-        if (!this.vertices.contains(aresta.getVertice1()) 
-                || !this.vertices.contains(aresta.getVertice2())) {
-            throw new Exception("ERRO - Vertice nao encontrado");
+        boolean hasVertice1 = false;
+        boolean hasVertice2 = false;
+
+        for (Vertice verticeAux : this.vertices) {
+            if (verticeAux.getNome().equals(aresta.getVertice1())) {
+                hasVertice1 = true;
+            }
+
+            if (verticeAux.getNome().equals(aresta.getVertice2())) {
+                hasVertice2 = true;
+            }
         }
 
-        this.arestas.add(aresta);  
+        if (!hasVertice1 || !hasVertice2) {
+            throw new Exception(
+                    "ERRO - Vertice nao encontrado | Vertice 1: " + hasVertice1 + " - Vertice 2: " + hasVertice2);
+        }
+
+        this.arestas.add(aresta);
     }
 
     public void removerAresta(Aresta aresta) throws Exception {
@@ -63,7 +77,7 @@ public class Grafo {
             throw new Exception("ERRO - Aresta nao encontrada");
         }
 
-        this.arestas.add(aresta);  
+        this.arestas.add(aresta);
     }
 
 }
