@@ -18,10 +18,13 @@ public class MainFactory {
     public void criarListaVertice(Grafo grafo) {        
         boolean maisVertice;
         do {
-            System.out.println("Insira o nome do vertice:");
-            String nomeVertice = scanner.nextLine();
-
-            grafo.adicionarVertice(nomeVertice);
+            try {
+                System.out.println("Insira o nome do vertice:");
+                String nomeVertice = scanner.nextLine();
+                grafo.adicionarVertice(nomeVertice);
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
 
             System.out.println("Deseja inserir mais um vertice? (S/N)");
             maisVertice = validarResposta();
@@ -31,10 +34,14 @@ public class MainFactory {
     public void criarListaAresta(Grafo grafo) {
         boolean maisVertice;
         do {
-            System.out.println("Insira a aresta no formato \"Vertice1, Vertice2, Peso\":");
-            String arestaString = scanner.nextLine();
+            try {
+                System.out.println("Insira a aresta no formato \"Vertice1, Vertice2, Peso\":");
+                String arestaString = scanner.nextLine();
 
-            grafo.adicionarAresta(arestaService.criarAresta(arestaString));
+                grafo.adicionarAresta(arestaService.criarAresta(arestaString));
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
 
             System.out.println("Deseja inserir mais uma aresta? (S/N)");
             maisVertice = validarResposta();
