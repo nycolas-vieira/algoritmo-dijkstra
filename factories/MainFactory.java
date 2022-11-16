@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import models.Grafo;
 import services.ArestaService;
-import services.DijkstraService;
 import services.VerticeService;
 
 public class MainFactory {
@@ -12,7 +11,6 @@ public class MainFactory {
     private static Scanner scanner = new Scanner(System.in);
     private ArestaService arestaService = new ArestaService();
     private VerticeService verticeService = new VerticeService();
-    private DijkstraService dijkstraService = new DijkstraService();
 
     public Grafo criaGrafoManual() {
         System.out.println("O grafo sera direcionado? (S/N)");
@@ -73,34 +71,4 @@ public class MainFactory {
         return resposta.toUpperCase().equals("S") ? true : false;
     }
 
-    /*
-     * public void executarDijksra(Dijkstra dijkstra) {
-     * System.out.println("Vertices: ");
-     * dijkstraService.getVerticesAbertos(dijkstra.getGrafo()).forEach(System.out::
-     * println);
-     * 
-     * System.out.println("Arestas disponíveis: ");
-     * dijkstraService.getArestasDisponiveis(dijkstra.getVerticeAtual(),
-     * dijkstra.getGrafo())
-     * .forEach(System.out::println);
-     * 
-     * do {
-     * Aresta menorAresta = new Aresta();
-     * List<Aresta> arestasDisponiveis =
-     * dijkstraService.getArestasDisponiveis(dijkstra.getVerticeAtual(),
-     * dijkstra.getGrafo());
-     * 
-     * for (Aresta arestaAux : arestasDisponiveis) {
-     * if (arestaAux.getPeso() < menorAresta.getPeso()) {
-     * menorAresta = arestaAux;
-     * } else {
-     * dijkstra.addPendentes(arestaAux);
-     * }
-     * }
-     * 
-     * dijkstraService.avancarAresta(dijkstra, menorAresta.getVertice2());
-     * } while (dijkstraService.getVerticesAbertos(dijkstra.getGrafo()).size() > 0);
-     * 
-     * }
-     */
 }

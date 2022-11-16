@@ -12,6 +12,11 @@ public class Dijkstra {
   private Vertice vizinho;
   public List<Vertice> naoVisitados = new ArrayList<Vertice>();
 
+  public List<Vertice> encontrarMenorCaminhoNDirecionado(Grafo grafo) {
+
+    return null;
+  }
+
   public List<Vertice> encontrarMenorCaminho(Grafo grafo) {
     Vertice v1 = grafo.getArestas().get(0).getVertice1();
     Vertice v2 = grafo.getArestas().get(grafo.getArestas().size() - 1).getVertice2();
