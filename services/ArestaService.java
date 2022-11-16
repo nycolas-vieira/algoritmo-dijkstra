@@ -1,10 +1,11 @@
 package services;
 
 import models.Aresta;
+import models.Vertice;
 
 public class ArestaService {
-    
-    public Aresta criarAresta(String arestaString) throws Exception{
+
+    public Aresta criarAresta(String arestaString) throws Exception {
         if (arestaString == null || arestaString.trim() == "") {
             throw new Exception("Formato para adicionar Aresta incorreto");
         }
@@ -18,10 +19,13 @@ public class ArestaService {
         validarVertice(aresta[0]);
         validarVertice(aresta[1]);
 
-        return new Aresta(aresta[0], aresta[1], Integer.parseInt(aresta[2]));
+        Vertice vertice1 = new Vertice(aresta[0]);
+        Vertice vertice2 = new Vertice(aresta[1]);
+
+        return new Aresta(vertice1, vertice2, Integer.parseInt(aresta[2]));
     }
 
-    private void validarVertice(String vertice) throws Exception{
+    private void validarVertice(String vertice) throws Exception {
         if (vertice == null || vertice.trim() == "") {
             throw new Exception("Vertice incorreta");
         }

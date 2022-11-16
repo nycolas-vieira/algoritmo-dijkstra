@@ -1,32 +1,36 @@
 package models;
 
 public class Aresta {
-    
-    private String vertice1;
 
-    private String vertice2;
+    private Vertice vertice1;
+
+    private Vertice vertice2;
 
     private Integer peso;
 
-    public Aresta(String vertice1, String vertice2, Integer peso) {
+    public Aresta() {
+        this.peso = Integer.MAX_VALUE;
+    }
+
+    public Aresta(Vertice vertice1, Vertice vertice2, Integer peso) {
         this.vertice1 = vertice1;
         this.vertice2 = vertice2;
         this.peso = peso;
     }
 
-    public String getVertice1() {
-        return vertice1;
+    public Vertice getVertice1() {
+        return this.vertice1;
     }
 
-    public void setVertice1(String vertice1) {
+    public void setVertice1(Vertice vertice1) {
         this.vertice1 = vertice1;
     }
 
-    public String getVertice2() {
-        return vertice2;
+    public Vertice getVertice2() {
+        return this.vertice2;
     }
 
-    public void setVertice2(String vertice2) {
+    public void setVertice2(Vertice vertice2) {
         this.vertice2 = vertice2;
     }
 
@@ -36,6 +40,12 @@ public class Aresta {
 
     public void setPeso(Integer peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public String toString() {
+        return "v1: " + this.vertice1.getNome() + " | v2: " + this.getVertice2().getNome() + " | peso: "
+                + this.getPeso();
     }
 
 }

@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import factories.MainFactory;
+import models.Aresta;
 import models.Grafo;
+import models.Vertice;
 
 public class LoadData {
   public static MainFactory factory = new MainFactory();
@@ -34,6 +36,28 @@ public class LoadData {
       while (buffer.ready()) {
         linha = buffer.readLine();
         factory.criarListaArestaTxt(grafo, linha);
+      }
+
+      // Setar os vizinhos
+      for (Vertice verticeAux : grafo.getVertices()) {
+        for (Aresta arestaAux : grafo.getArestas()) {
+          if (verticeAux.getNome().equals(arestaAux.getVertice1().getNome())) {
+            verticeAux.getVizinhos().add(arestaAux.getVertice2());
+            verticeAux.getArestas().add(arestaAux);
+          }
+        }
+      }
+
+      // Preenchendo o dado dos vizinhos contido dentro das arestas
+      for (Vertice verticeAux : grafo.getVertices()) {
+        for (Aresta arestaAux : grafo.getArestas()) {
+          if (arestaAux.getVertice1().getNome().equals(verticeAux.getNome())) {
+            arestaAux.setVertice1(verticeAux);
+          }
+          if (arestaAux.getVertice2().getNome().equals(verticeAux.getNome())) {
+            arestaAux.setVertice2(verticeAux);
+          }
+        }
       }
 
       grafo.setDirecionado(direcionado);
