@@ -63,6 +63,15 @@ public class Dijkstra {
 
   }
 
+  public int getCaminhoTotal(List<Vertice> lista) {
+    int total = 0;
+    for (Vertice verticeAux : lista) {
+      total += verticeAux.getDistancia();
+    }
+
+    return total;
+  }
+
   // Get/Sets
   public List<Vertice> getMenorCaminho() {
     return menorCaminho;

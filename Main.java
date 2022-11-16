@@ -47,6 +47,7 @@ public class Main {
         Dijkstra dijkstra = new Dijkstra();
         resultado = dijkstra.encontrarMenorCaminho(grafo);
         System.out.println("Menor Caminho: " + resultado);
+        System.out.println("Menor Distancia:  " + dijkstra.getCaminhoTotal(resultado));
     }
 
 }
