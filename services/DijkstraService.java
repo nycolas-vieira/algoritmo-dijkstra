@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Aresta;
+import models.Dijkstra;
 import models.Grafo;
 import models.Vertice;
 
@@ -20,18 +21,18 @@ public class DijkstraService {
     return vertices;
   }
 
-  public Aresta pegarArestasDisponiveis(Vertice verticeAtual, Grafo grafo) {
+  public List<Aresta> getArestasDisponiveis(Vertice verticeAtual, Grafo grafo) {
     List<Aresta> listaDisponiveis = new ArrayList<Aresta>();
 
     for (Aresta aresta : grafo.getArestas()) {
-      if (aresta.getVertice1().equals(verticeAtual) && !aresta.getVertice2().getFechado()) {
+      if (aresta.getVertice1().getNome().equals(verticeAtual.getNome()) && !aresta.getVertice2().getFechado()) {
         listaDisponiveis.add(aresta);
       }
     }
-    return null;
+    return listaDisponiveis;
   }
 
-  public void avancarAresta(Grafo grafo) {
+  public void avancarAresta(Dijkstra dijkstra, Vertice proximaVertice) {
 
   }
 

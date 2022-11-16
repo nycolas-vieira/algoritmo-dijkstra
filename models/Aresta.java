@@ -8,6 +8,10 @@ public class Aresta {
 
     private Integer peso;
 
+    public Aresta() {
+        this.peso = Integer.MAX_VALUE;
+    }
+
     public Aresta(Vertice vertice1, Vertice vertice2, Integer peso) {
         this.vertice1 = vertice1;
         this.vertice2 = vertice2;
@@ -36,6 +40,12 @@ public class Aresta {
 
     public void setPeso(Integer peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public String toString() {
+        return "v1: " + this.vertice1.getNome() + " | v2: " + this.getVertice2().getNome() + " | peso: "
+                + this.getPeso();
     }
 
 }

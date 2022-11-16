@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import factories.MainFactory;
 import models.Aresta;
 import models.Dijkstra;
@@ -40,8 +43,10 @@ public class Main {
 
         System.out.println();
 
-        Dijkstra dijkstra = new Dijkstra(grafo);
-        factory.executarDijksra(dijkstra);
+        List<Vertice> resultado = new ArrayList<Vertice>();
+        Dijkstra dijkstra = new Dijkstra();
+        resultado = dijkstra.encontrarMenorCaminho(grafo);
+        System.out.println("Menor Caminho: " + resultado);
     }
 
 }

@@ -3,9 +3,13 @@ package util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import factories.MainFactory;
+import models.Aresta;
 import models.Grafo;
+import models.Vertice;
 
 public class LoadData {
   public static MainFactory factory = new MainFactory();
@@ -36,6 +40,15 @@ public class LoadData {
         factory.criarListaArestaTxt(grafo, linha);
       }
 
+      // Setar os vizinhos
+      for (Vertice verticeAux : grafo.getVertices()) {
+        for (Aresta arestaAux : grafo.getArestas()) {
+          if (verticeAux.getNome().equals(arestaAux.getVertice1().getNome())) {
+            verticeAux.getVizinhos().add(arestaAux.getVertice2());
+            verticeAux.getArestas().add(arestaAux);
+          }
+        }
+      }
       grafo.setDirecionado(direcionado);
 
       // Fechando os leitores
