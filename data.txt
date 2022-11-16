@@ -6,8 +6,8 @@ C
 D
 E
 A,B,3
-A,E,1
 E,C,1
+A,E,1
 A,C,50
 B,D,4
 D,C,2
