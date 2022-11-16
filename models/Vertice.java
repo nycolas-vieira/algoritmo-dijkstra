@@ -6,16 +6,17 @@ import java.util.List;
 public class Vertice implements Comparable<Vertice> {
 
   private String nome;
-  private boolean fechado;
   private int distancia;
   private boolean visitado = false;
   private Vertice pai;
   private List<Aresta> arestas = new ArrayList<Aresta>();
   private List<Vertice> vizinhos = new ArrayList<Vertice>();
 
+  public Vertice() {
+  }
+
   public Vertice(String nome) {
     this.nome = nome;
-    this.fechado = false;
   }
 
   public String getNome() {
@@ -24,14 +25,6 @@ public class Vertice implements Comparable<Vertice> {
 
   public void setNome(String nome) {
     this.nome = nome;
-  }
-
-  public boolean getFechado() {
-    return fechado;
-  }
-
-  public void setFechado(boolean estado) {
-    this.fechado = estado;
   }
 
   public void visitar() {
@@ -87,8 +80,6 @@ public class Vertice implements Comparable<Vertice> {
   }
 
   public int compareTo(Vertice vertice) {
-    System.out.println("THIS: " + this.getNome() + " - D: " + this.getDistancia());
-    System.out.println("v: " + vertice.getNome() + " - D: " + vertice.getDistancia());
     if (this.getDistancia() < vertice.getDistancia())
       return -1;
     else if (this.getDistancia() == vertice.getDistancia())

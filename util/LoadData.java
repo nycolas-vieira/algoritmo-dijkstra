@@ -3,8 +3,6 @@ package util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import factories.MainFactory;
 import models.Aresta;
@@ -49,6 +47,19 @@ public class LoadData {
           }
         }
       }
+
+      // Preenchendo o dado dos vizinhos contido dentro das arestas
+      for (Vertice verticeAux : grafo.getVertices()) {
+        for (Aresta arestaAux : grafo.getArestas()) {
+          if (arestaAux.getVertice1().getNome().equals(verticeAux.getNome())) {
+            arestaAux.setVertice1(verticeAux);
+          }
+          if (arestaAux.getVertice2().getNome().equals(verticeAux.getNome())) {
+            arestaAux.setVertice2(verticeAux);
+          }
+        }
+      }
+
       grafo.setDirecionado(direcionado);
 
       // Fechando os leitores

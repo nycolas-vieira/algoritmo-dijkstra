@@ -9,13 +9,12 @@ public class Dijkstra {
   private List<Vertice> menorCaminho = new ArrayList<Vertice>();
   private Vertice verticeCaminho = new Vertice(null);
   private Vertice atual = new Vertice(null);
-  private Vertice vizinho = new Vertice(null);
-  private List<Vertice> naoVisitados = new ArrayList<Vertice>();
+  private Vertice vizinho;
+  public List<Vertice> naoVisitados = new ArrayList<Vertice>();
 
   public List<Vertice> encontrarMenorCaminho(Grafo grafo) {
     Vertice v1 = grafo.getArestas().get(0).getVertice1();
     Vertice v2 = grafo.getArestas().get(grafo.getArestas().size() - 1).getVertice2();
-
     menorCaminho.add(v1);
 
     for (int i = 0; i < grafo.getVertices().size(); i++) {
@@ -27,23 +26,18 @@ public class Dijkstra {
 
       this.naoVisitados.add(grafo.getVertices().get(i));
     }
-
     Collections.sort(this.naoVisitados);
 
     while (!this.naoVisitados.isEmpty()) {
       this.atual = this.naoVisitados.get(0);
-      System.out.println("Pegou esse vertice:  " + atual);
 
       for (int i = 0; i < atual.getArestas().size(); i++) {
         this.vizinho = atual.getArestas().get(i).getVertice2();
-        System.out.println("Olhando o vizinho de " + atual + ": " + vizinho);
         if (!vizinho.verificarVisita()) {
-          System.out.println("peso atual: " + atual.getArestas().get(i).getPeso());
           if (vizinho.getDistancia() > (atual.getDistancia() + atual.getArestas().get(i).getPeso())) {
             vizinho.setDistancia(atual.getDistancia() + atual.getArestas().get(i).getPeso());
             vizinho.setPai(atual);
 
-            System.out.println("Distancia do vizinho " + vizinho + " atualizada para " + vizinho.getDistancia());
             if (vizinho == v2) {
               menorCaminho.clear();
               verticeCaminho = vizinho;
@@ -100,14 +94,6 @@ public class Dijkstra {
 
   public void setVizinho(Vertice vizinho) {
     this.vizinho = vizinho;
-  }
-
-  public List<Vertice> getNaoVisitados() {
-    return naoVisitados;
-  }
-
-  public void setNaoVisitados(List<Vertice> naoVisitados) {
-    this.naoVisitados = naoVisitados;
   }
 
 }

@@ -19,7 +19,7 @@ public class Aresta {
     }
 
     public Vertice getVertice1() {
-        return vertice1;
+        return this.vertice1;
     }
 
     public void setVertice1(Vertice vertice1) {
@@ -27,7 +27,7 @@ public class Aresta {
     }
 
     public Vertice getVertice2() {
-        return vertice2;
+        return this.vertice2;
     }
 
     public void setVertice2(Vertice vertice2) {
